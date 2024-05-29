@@ -13,4 +13,4 @@ https://docs.google.com/spreadsheets/d/1FULllwhYXk-WVJWUgwRhYZdlAT9G--Ono_JR5y0e
 
 -ngrokทำให้serverเป็นworld wide : เสร็จแล้ว
 
-
+Work from home 29 May 2024 : อัพเดตงานวันนี้ https://docs.google.com/document/d/1OFwnCcRCdhj7JED_g7tfobQq-YCxnvnvqUKhVZHDLPU/edit?usp=sharing
