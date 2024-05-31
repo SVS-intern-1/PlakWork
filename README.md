@@ -14,3 +14,9 @@ https://docs.google.com/spreadsheets/d/1FULllwhYXk-WVJWUgwRhYZdlAT9G--Ono_JR5y0e
 -ngrokทำให้serverเป็นworld wide : เสร็จแล้ว
 
 Work from home 29 May 2024 : อัพเดตงานวันนี้ https://docs.google.com/document/d/1OFwnCcRCdhj7JED_g7tfobQq-YCxnvnvqUKhVZHDLPU/edit?usp=sharing
+
+-ต่อLCD ทำให้หน้าจอโชว์ค่าที่วัดได้ : เสร็จแล้ว
+
+-เปลี่ยนจากDHT11 -> BME280 เพื่อวัดpressureและaltitudeเพิ่ม : เสร็จแล้ว
+
+-แก้ไขวิธีการส่งข้อมูลไปยังdatabase : เสร็จแล้ว
