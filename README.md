@@ -20,3 +20,5 @@ Work from home 29 May 2024 : อัพเดตงานวันนี้ https
 -เปลี่ยนจากDHT11 -> BME280 เพื่อวัดpressureและaltitudeเพิ่ม : เสร็จแล้ว
 
 -แก้ไขวิธีการส่งข้อมูลไปยังdatabase : เสร็จแล้ว
+
+Document & Node-RED : https://drive.google.com/drive/folders/14a265wqFCrdxDf0EfVLAEIfz8Yatp1ns?usp=sharing
