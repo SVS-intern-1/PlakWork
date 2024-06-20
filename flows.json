@@ -1,0 +1,1913 @@
+[
+    {
+        "id": "1bdb96627d2ebdbe",
+        "type": "tab",
+        "label": "IOT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "26413c53946810bb",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "7cb88d866578c371"
+            ]
+        ]
+    },
+    {
+        "id": "62d9b9a3cd093e28",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7cb88d866578c371",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET Indoor_data",
+        "func": "msg.topic = \"SELECT * FROM indoor_db ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 60,
+        "wires": [
+            [
+                "4214f6ad1a21010f"
+            ]
+        ]
+    },
+    {
+        "id": "4214f6ad1a21010f",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 60,
+        "wires": [
+            [
+                "1f3e1dd2df592106"
+            ]
+        ]
+    },
+    {
+        "id": "a16e4631c614b733",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "51df7bb3a022c367"
+            ]
+        ]
+    },
+    {
+        "id": "77254442f2a0d90a",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "51df7bb3a022c367",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET Outdoor data",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "5e2dea7451d766ed"
+            ]
+        ]
+    },
+    {
+        "id": "5e2dea7451d766ed",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 140,
+        "wires": [
+            [
+                "6c16010c6a4ce5ca"
+            ]
+        ]
+    },
+    {
+        "id": "cf0e0c41d89b8342",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_temperature",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "d70178b0c6a45079"
+            ]
+        ]
+    },
+    {
+        "id": "57e504f68eaa016b",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d70178b0c6a45079",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET indoor_temp",
+        "func": "msg.topic = \"SELECT * FROM indoor_db WHERE measurement_type = 'temperature' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "3d09ac774540a390"
+            ]
+        ]
+    },
+    {
+        "id": "3d09ac774540a390",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 220,
+        "wires": [
+            [
+                "814c512493a708c6"
+            ]
+        ]
+    },
+    {
+        "id": "bbadc8e77b6b7ed9",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "url": "/api/all_data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1940,
+        "wires": [
+            [
+                "239975b446153ae0"
+            ]
+        ]
+    },
+    {
+        "id": "7b71890f088f8d65",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 540,
+        "y": 1920,
+        "wires": [
+            [
+                "adc4f37bcd542dc2"
+            ]
+        ]
+    },
+    {
+        "id": "1448a988f5ec7f5e",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 540,
+        "y": 1980,
+        "wires": [
+            [
+                "699ca80639c27eb9"
+            ]
+        ]
+    },
+    {
+        "id": "c5ac8aaffa6b2787",
+        "type": "inject",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 2000,
+        "wires": [
+            [
+                "239975b446153ae0"
+            ]
+        ]
+    },
+    {
+        "id": "e89e7e3709fed3ef",
+        "type": "debug",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "all",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "e75e3c55f66dd907",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1260,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "cd645f43e968b82e",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "GET Indoor_data",
+        "func": "msg.topic = \"SELECT * FROM indoor_db ORDER BY id DESC LIMIT 4\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1920,
+        "wires": [
+            [
+                "7b71890f088f8d65"
+            ]
+        ]
+    },
+    {
+        "id": "46a848f5093ad0b9",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "GET Outdoor data",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db ORDER BY id DESC LIMIT 4\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1980,
+        "wires": [
+            [
+                "1448a988f5ec7f5e"
+            ]
+        ]
+    },
+    {
+        "id": "239975b446153ae0",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "function 2",
+        "func": "msg.topic1 = \"SELECT * FROM indoor_db ORDER BY id DESC LIMIT 4\";\nmsg.topic2 = \"SELECT * FROM outdoor_db ORDER BY id DESC LIMIT 4\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 2040,
+        "wires": [
+            [
+                "2c3b43658eebc785"
+            ]
+        ]
+    },
+    {
+        "id": "7af3823e10e65729",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_temperature",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "cef6be9ee3deafdb"
+            ]
+        ]
+    },
+    {
+        "id": "5c7d67773420cc40",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "cef6be9ee3deafdb",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET outdoor_temp",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db WHERE measurement_type = 'temperature' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 300,
+        "wires": [
+            [
+                "efecbb9daee6d9be"
+            ]
+        ]
+    },
+    {
+        "id": "efecbb9daee6d9be",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 300,
+        "wires": [
+            [
+                "cda810010380d022"
+            ]
+        ]
+    },
+    {
+        "id": "acc2ca6df10bae19",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_humidity",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "03b8e98656a77db7"
+            ]
+        ]
+    },
+    {
+        "id": "f9579874ab0a2b40",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "03b8e98656a77db7",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET indoor_humidity",
+        "func": "msg.topic = \"SELECT * FROM indoor_db WHERE measurement_type = 'humidity' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "2eb01f10b8abd463"
+            ]
+        ]
+    },
+    {
+        "id": "2eb01f10b8abd463",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 380,
+        "wires": [
+            [
+                "87337372bd5c775f"
+            ]
+        ]
+    },
+    {
+        "id": "0c59761592009a4f",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_humidity",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 460,
+        "wires": [
+            [
+                "6eb077eab4a4b6b4"
+            ]
+        ]
+    },
+    {
+        "id": "be0708b87442cb55",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "6eb077eab4a4b6b4",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET outdoor_humidity",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db WHERE measurement_type = 'humidity' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "adf02fbe657c49e4"
+            ]
+        ]
+    },
+    {
+        "id": "adf02fbe657c49e4",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 460,
+        "wires": [
+            [
+                "d6b27c936a021bfa"
+            ]
+        ]
+    },
+    {
+        "id": "4092179027ee2bfa",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_pressure",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "d330ac8a03b34e21"
+            ]
+        ]
+    },
+    {
+        "id": "99cb997c91d281f8",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d330ac8a03b34e21",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET indoor_pressure",
+        "func": "msg.topic = \"SELECT * FROM indoor_db WHERE measurement_type = 'pressure' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 540,
+        "wires": [
+            [
+                "f51cbe78af67d576"
+            ]
+        ]
+    },
+    {
+        "id": "f51cbe78af67d576",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 540,
+        "wires": [
+            [
+                "18b79ce3b9cfa6df"
+            ]
+        ]
+    },
+    {
+        "id": "5dc8ce053ba8d63f",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_pressure",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 620,
+        "wires": [
+            [
+                "8053e2883d6e33bc"
+            ]
+        ]
+    },
+    {
+        "id": "709fd44bbaeb08e1",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "8053e2883d6e33bc",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET outdoor_pressure",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db WHERE measurement_type = 'pressure' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 620,
+        "wires": [
+            [
+                "c9652ad9fe2fa657"
+            ]
+        ]
+    },
+    {
+        "id": "c9652ad9fe2fa657",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 620,
+        "wires": [
+            [
+                "65e3c3d80eaf8eda"
+            ]
+        ]
+    },
+    {
+        "id": "c7dbd7ecdaa06cb0",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_gas",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 700,
+        "wires": [
+            [
+                "6a0c8a593e48609e"
+            ]
+        ]
+    },
+    {
+        "id": "b8bc50a009e78709",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "6a0c8a593e48609e",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET indoor_gas",
+        "func": "msg.topic = \"SELECT * FROM indoor_db WHERE measurement_type = 'gas' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 700,
+        "wires": [
+            [
+                "a0f7c67698059598"
+            ]
+        ]
+    },
+    {
+        "id": "a0f7c67698059598",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 700,
+        "wires": [
+            [
+                "f1e2c4b75bbace17"
+            ]
+        ]
+    },
+    {
+        "id": "db36a65ac0526552",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_gas",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 780,
+        "wires": [
+            [
+                "059b583dcf048559"
+            ]
+        ]
+    },
+    {
+        "id": "08b1418436b55bde",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "059b583dcf048559",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET outdoor_gas",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db WHERE measurement_type = 'gas' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 780,
+        "wires": [
+            [
+                "841d7fec6466eb8e"
+            ]
+        ]
+    },
+    {
+        "id": "841d7fec6466eb8e",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 780,
+        "wires": [
+            [
+                "1930e0212dfa5c81"
+            ]
+        ]
+    },
+    {
+        "id": "062ba0011ddbc611",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_bme280",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 860,
+        "wires": [
+            [
+                "2e171b6addf951b3"
+            ]
+        ]
+    },
+    {
+        "id": "2d11eb24a233adf4",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "2e171b6addf951b3",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET indoor_BME280",
+        "func": "msg.topic = \"SELECT measurement_type, rawdata, device_unit, datatime FROM indoor_db WHERE device_model = 'BME280' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 860,
+        "wires": [
+            [
+                "3aa8703d812022e4"
+            ]
+        ]
+    },
+    {
+        "id": "3aa8703d812022e4",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 860,
+        "wires": [
+            [
+                "3681cc01ffcf02d9"
+            ]
+        ]
+    },
+    {
+        "id": "03129ceaf446feb2",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_bme280",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 940,
+        "wires": [
+            [
+                "1524f2492e79508f"
+            ]
+        ]
+    },
+    {
+        "id": "d99839c41825b71e",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "1524f2492e79508f",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET outdoor_BME280",
+        "func": "msg.topic = \"SELECT measurement_type, rawdata, device_unit, datatime FROM outdoor_db WHERE device_model = 'BME280' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 940,
+        "wires": [
+            [
+                "9bf3e983833a9173"
+            ]
+        ]
+    },
+    {
+        "id": "9bf3e983833a9173",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 940,
+        "wires": [
+            [
+                "3399a391681892d9"
+            ]
+        ]
+    },
+    {
+        "id": "67556112f0d1bb84",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/indoor_mq2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 1020,
+        "wires": [
+            [
+                "fa576a89938e89a8"
+            ]
+        ]
+    },
+    {
+        "id": "a8fe3d810edc37cc",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "fa576a89938e89a8",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET indoor_mq2",
+        "func": "msg.topic = \"SELECT measurement_type, rawdata, device_unit, datatime FROM indoor_db WHERE device_model = 'MQ-2' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1020,
+        "wires": [
+            [
+                "6c74898570e079ec"
+            ]
+        ]
+    },
+    {
+        "id": "6c74898570e079ec",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 1020,
+        "wires": [
+            [
+                "af25a31fdf03e698"
+            ]
+        ]
+    },
+    {
+        "id": "86497859771b3c99",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/api/outdoor_mq2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 1100,
+        "wires": [
+            [
+                "cbd40b787696b0f4"
+            ]
+        ]
+    },
+    {
+        "id": "0670d737afbe026c",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1000,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "cbd40b787696b0f4",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "GET outdoor_mq2",
+        "func": "msg.topic = \"SELECT measurement_type, rawdata, device_unit, datatime FROM outdoor_db WHERE device_model = 'MQ-2' ORDER BY id DESC LIMIT 500\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1100,
+        "wires": [
+            [
+                "ded28fcd74ad5a03"
+            ]
+        ]
+    },
+    {
+        "id": "ded28fcd74ad5a03",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 640,
+        "y": 1100,
+        "wires": [
+            [
+                "c77c16479888fe73"
+            ]
+        ]
+    },
+    {
+        "id": "d26c56e779c8dbb8",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/post_indoor",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1220,
+        "wires": [
+            [
+                "d4673fe65a123e25"
+            ]
+        ]
+    },
+    {
+        "id": "8b1a4f39f10d207c",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 800,
+        "y": 1220,
+        "wires": [
+            [
+                "ccd5a1697add78a4",
+                "f0a28fcbc7c9fbe5"
+            ]
+        ]
+    },
+    {
+        "id": "ccd5a1697add78a4",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 980,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "222f78bed42aa516",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "POST indoor",
+        "func": "msg.topic = \"INSERT INTO indoor_db (asset_type, asset_uuid, device_controller, measurement_type, device_uuid, device_name, device_model, device_brand, rawdata, device_unit, device_status) VALUES (:asset_type, :asset_uuid, :device_controller, :measurement_type, :device_uuid, :device_name, :device_model, :device_brand, :rawdata, :device_unit, :device_status)\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 1220,
+        "wires": [
+            [
+                "8b1a4f39f10d207c"
+            ]
+        ]
+    },
+    {
+        "id": "33c7a59de1e16ae5",
+        "type": "inject",
+        "z": "1bdb96627d2ebdbe",
+        "name": "test post",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":[{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"temperature\",\"device_uuid\":\"fbcdffbb-539c-4445-a1ac-b23dfc9d742a\",\"device_name\":\"Temperature Sensor\",\"device_model\":\"BME280\",\"device_brand\":\"Adafruit\",\"rawdata\":\"25.65\",\"device_unit\":\"°C\",\"device_status\":\"BME280 sensor OK\"},{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"humidity\",\"device_uuid\":\"fbcdffbb-539c-4445-a1ac-b23dfc9d742a\",\"device_name\":\"Humidity Sensor\",\"device_model\":\"BME280\",\"device_brand\":\"Adafruit\",\"rawdata\":\"47.42\",\"device_unit\":\"%\",\"device_status\":\"BME280 sensor OK\"},{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"pressure\",\"device_uuid\":\"fbcdffbb-539c-4445-a1ac-b23dfc9d742a\",\"device_name\":\"Pressure Sensor\",\"device_model\":\"BME280\",\"device_brand\":\"Adafruit\",\"rawdata\":\"1005.37\",\"device_unit\":\"hPa\",\"device_status\":\"BME280 sensor OK\"},{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"gas\",\"device_uuid\":\"9c794ae7-f900-4ec3-a325-556ca7cb6a9c\",\"device_name\":\"Smoke Gas Sensor\",\"device_model\":\"MQ-2\",\"device_brand\":\"Hanwei Electronics\",\"rawdata\":\"6.80\",\"device_unit\":\"ppm\",\"device_status\":\"Gas sensor OK\"}]}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 1260,
+        "wires": [
+            [
+                "d4673fe65a123e25"
+            ]
+        ]
+    },
+    {
+        "id": "f0a28fcbc7c9fbe5",
+        "type": "debug",
+        "z": "1bdb96627d2ebdbe",
+        "name": "test post",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "d4673fe65a123e25",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "Spilt JSON",
+        "func": "// Assume msg.payload contains the array of objects\nconst dataArray = msg.payload.data;\nfor (let item of dataArray) {\n    node.send({payload: item});\n}\nreturn null; // Ensure no double output\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1220,
+        "wires": [
+            [
+                "222f78bed42aa516"
+            ]
+        ]
+    },
+    {
+        "id": "65df482a83aeae42",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "url": "/post_outdoor",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1340,
+        "wires": [
+            [
+                "8a80cfc54f715a70"
+            ]
+        ]
+    },
+    {
+        "id": "216f9e68fb14fe34",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 800,
+        "y": 1340,
+        "wires": [
+            [
+                "cef3b89e5c0479c1",
+                "fdc0e59d1181a58b"
+            ]
+        ]
+    },
+    {
+        "id": "cef3b89e5c0479c1",
+        "type": "http response",
+        "z": "1bdb96627d2ebdbe",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 980,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "bd66d29cae773281",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "POST outdoor",
+        "func": "msg.topic = \"INSERT INTO outdoor_db (asset_type, asset_uuid, device_controller, measurement_type, device_uuid, device_name, device_model, device_brand, rawdata, device_unit, device_status) VALUES (:asset_type, :asset_uuid, :device_controller, :measurement_type, :device_uuid, :device_name, :device_model, :device_brand, :rawdata, :device_unit, :device_status)\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1340,
+        "wires": [
+            [
+                "216f9e68fb14fe34"
+            ]
+        ]
+    },
+    {
+        "id": "2f5f9ebcb4e4ebf9",
+        "type": "inject",
+        "z": "1bdb96627d2ebdbe",
+        "name": "test post",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":[{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"temperature\",\"device_uuid\":\"fbcdffbb-539c-4445-a1ac-b23dfc9d742a\",\"device_name\":\"Temperature Sensor\",\"device_model\":\"BME280\",\"device_brand\":\"Adafruit\",\"rawdata\":\"25.65\",\"device_unit\":\"°C\",\"device_status\":\"BME280 sensor OK\"},{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"humidity\",\"device_uuid\":\"fbcdffbb-539c-4445-a1ac-b23dfc9d742a\",\"device_name\":\"Humidity Sensor\",\"device_model\":\"BME280\",\"device_brand\":\"Adafruit\",\"rawdata\":\"47.42\",\"device_unit\":\"%\",\"device_status\":\"BME280 sensor OK\"},{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"pressure\",\"device_uuid\":\"fbcdffbb-539c-4445-a1ac-b23dfc9d742a\",\"device_name\":\"Pressure Sensor\",\"device_model\":\"BME280\",\"device_brand\":\"Adafruit\",\"rawdata\":\"1005.37\",\"device_unit\":\"hPa\",\"device_status\":\"BME280 sensor OK\"},{\"asset_type\":\"Indoor\",\"asset_uuid\":\"7d95abe7-a9c2-4014-bf53-4259705e6bce\",\"device_controller\":\"ESP32\",\"measurement_type\":\"gas\",\"device_uuid\":\"9c794ae7-f900-4ec3-a325-556ca7cb6a9c\",\"device_name\":\"Smoke Gas Sensor\",\"device_model\":\"MQ-2\",\"device_brand\":\"Hanwei Electronics\",\"rawdata\":\"6.80\",\"device_unit\":\"ppm\",\"device_status\":\"Gas sensor OK\"}]}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 1380,
+        "wires": [
+            [
+                "8a80cfc54f715a70"
+            ]
+        ]
+    },
+    {
+        "id": "fdc0e59d1181a58b",
+        "type": "debug",
+        "z": "1bdb96627d2ebdbe",
+        "name": "test post",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "8a80cfc54f715a70",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "Split JSON",
+        "func": "// Assume msg.payload contains the array of objects\nconst dataArray = msg.payload.data;\nfor (let item of dataArray) {\n    node.send({payload: item});\n}\nreturn null; // Ensure no double output\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1340,
+        "wires": [
+            [
+                "bd66d29cae773281"
+            ]
+        ]
+    },
+    {
+        "id": "adc4f37bcd542dc2",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "Merge",
+        "func": "// Assuming msg.payload contains the first JSON payload\nlet json1 = msg.payload;\n\n// Assuming msg.payload2 contains the second JSON payload\nlet json2 = msg.payload2;\n\nlet combinedData = {\n    \"payload1\": json1,\n    \"payload2\": json2\n};\n\nmsg.payload = combinedData;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 1960,
+        "wires": [
+            [
+                "e75e3c55f66dd907"
+            ]
+        ]
+    },
+    {
+        "id": "a3546b65a0a4c53b",
+        "type": "http in",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "url": "/api/all_data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 2160,
+        "wires": [
+            [
+                "5479165a6d82ce8c",
+                "8161fe58dedd4fc2"
+            ]
+        ]
+    },
+    {
+        "id": "61be7d2ccff406a3",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 540,
+        "y": 2140,
+        "wires": [
+            [
+                "c72e5a88459ab0cc"
+            ]
+        ]
+    },
+    {
+        "id": "88073610ef89fea3",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 540,
+        "y": 2200,
+        "wires": [
+            [
+                "33ac045ac2920367"
+            ]
+        ]
+    },
+    {
+        "id": "b293e517c2b675b2",
+        "type": "inject",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 2220,
+        "wires": [
+            [
+                "5479165a6d82ce8c",
+                "8161fe58dedd4fc2"
+            ]
+        ]
+    },
+    {
+        "id": "480b8a1925a2e572",
+        "type": "debug",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "all",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 2280,
+        "wires": []
+    },
+    {
+        "id": "5479165a6d82ce8c",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "GET Indoor_data",
+        "func": "msg.topic = \"SELECT * FROM indoor_db ORDER BY id DESC LIMIT 4\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 2140,
+        "wires": [
+            [
+                "61be7d2ccff406a3"
+            ]
+        ]
+    },
+    {
+        "id": "8161fe58dedd4fc2",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "GET Outdoor data",
+        "func": "msg.topic = \"SELECT * FROM outdoor_db ORDER BY id DESC LIMIT 4\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 2200,
+        "wires": [
+            [
+                "88073610ef89fea3"
+            ]
+        ]
+    },
+    {
+        "id": "699ca80639c27eb9",
+        "type": "change",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload2",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 1980,
+        "wires": [
+            [
+                "adc4f37bcd542dc2"
+            ]
+        ]
+    },
+    {
+        "id": "2c3b43658eebc785",
+        "type": "mysql",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "mydb": "9bebb02fc31e264b",
+        "name": "",
+        "x": 540,
+        "y": 2040,
+        "wires": [
+            [
+                "e89e7e3709fed3ef"
+            ]
+        ]
+    },
+    {
+        "id": "c72e5a88459ab0cc",
+        "type": "change",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload1",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 2140,
+        "wires": [
+            [
+                "662d022fd6aca69d"
+            ]
+        ]
+    },
+    {
+        "id": "33ac045ac2920367",
+        "type": "change",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 2200,
+        "wires": [
+            [
+                "04d600d2ba80d873"
+            ]
+        ]
+    },
+    {
+        "id": "67b423f1537b8a81",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "Merge",
+        "func": "// Assuming msg.payload contains the first JSON payload\nlet json1 = msg.payload1;\n\n// Assuming msg.payload2 contains the second JSON payload\nlet json2 = msg.payload2;\n\nlet combinedData = {\n    \"payload1\": json1,\n    \"payload2\": json2\n};\n\nmsg.payload = combinedData;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 2160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "662d022fd6aca69d",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "payload1",
+        "func": "// Assuming msg.payload contains the data you want to rename to msg.payload1\nmsg.payload1 = msg.payload;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 2140,
+        "wires": [
+            [
+                "67b423f1537b8a81",
+                "480b8a1925a2e572"
+            ]
+        ]
+    },
+    {
+        "id": "04d600d2ba80d873",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "d": true,
+        "name": "payload2",
+        "func": "// Assuming msg.payload contains the data you want to rename to msg.payload1\nmsg.payload2 = msg.payload;\nmsg.payload = null; // or msg.payload = {}; or any other value you want\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 2200,
+        "wires": [
+            [
+                "67b423f1537b8a81"
+            ]
+        ]
+    },
+    {
+        "id": "f1e2c4b75bbace17",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 700,
+        "wires": [
+            [
+                "b8bc50a009e78709"
+            ]
+        ]
+    },
+    {
+        "id": "65e3c3d80eaf8eda",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 620,
+        "wires": [
+            [
+                "709fd44bbaeb08e1"
+            ]
+        ]
+    },
+    {
+        "id": "18b79ce3b9cfa6df",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 540,
+        "wires": [
+            [
+                "99cb997c91d281f8"
+            ]
+        ]
+    },
+    {
+        "id": "d6b27c936a021bfa",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 460,
+        "wires": [
+            [
+                "be0708b87442cb55"
+            ]
+        ]
+    },
+    {
+        "id": "87337372bd5c775f",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 380,
+        "wires": [
+            [
+                "f9579874ab0a2b40"
+            ]
+        ]
+    },
+    {
+        "id": "cda810010380d022",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 300,
+        "wires": [
+            [
+                "5c7d67773420cc40"
+            ]
+        ]
+    },
+    {
+        "id": "814c512493a708c6",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 220,
+        "wires": [
+            [
+                "57e504f68eaa016b"
+            ]
+        ]
+    },
+    {
+        "id": "6c16010c6a4ce5ca",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 140,
+        "wires": [
+            [
+                "77254442f2a0d90a"
+            ]
+        ]
+    },
+    {
+        "id": "1f3e1dd2df592106",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 60,
+        "wires": [
+            [
+                "62d9b9a3cd093e28"
+            ]
+        ]
+    },
+    {
+        "id": "1930e0212dfa5c81",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 780,
+        "wires": [
+            [
+                "08b1418436b55bde"
+            ]
+        ]
+    },
+    {
+        "id": "3681cc01ffcf02d9",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 860,
+        "wires": [
+            [
+                "2d11eb24a233adf4"
+            ]
+        ]
+    },
+    {
+        "id": "3399a391681892d9",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 940,
+        "wires": [
+            [
+                "d99839c41825b71e"
+            ]
+        ]
+    },
+    {
+        "id": "af25a31fdf03e698",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1020,
+        "wires": [
+            [
+                "a8fe3d810edc37cc"
+            ]
+        ]
+    },
+    {
+        "id": "c77c16479888fe73",
+        "type": "function",
+        "z": "1bdb96627d2ebdbe",
+        "name": "TH",
+        "func": "// Define the function to convert the date string to Thailand time\nfunction convertToThailandTime(dateTimeString) {\n\n    // Create a new Date object from the modified date string\n    let date = new Date(dateTimeString);\n\n    // Add the offset for Thailand time (UTC+7)\n    date.setHours(date.getHours() + 7);\n\n    // Remove the \".000Z\" from the datetime string\n    //dateTimeString = dateTimeString.replace(\".000Z\", \"\");\n\n    // Return the date string in the format \"YYYY-MM-DDTHH:MM:SS\"\n    return date.toISOString().slice(0, -5);\n}\n\n// Iterate over each message in msg.payload and convert the datatime\nmsg.payload.forEach(function (data) {\n    data.datatime = convertToThailandTime(data.datatime);\n});\n\n// Return the modified message\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1100,
+        "wires": [
+            [
+                "0670d737afbe026c"
+            ]
+        ]
+    },
+    {
+        "id": "9bebb02fc31e264b",
+        "type": "MySQLdatabase",
+        "name": "MySQL",
+        "host": "localhost",
+        "port": "3306",
+        "db": "sensor_db",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
